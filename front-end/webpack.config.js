@@ -36,6 +36,17 @@ module.exports = (_, argv) => ({
           loader: "babel-loader",
         },
       },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              outputPath: "images", // Output path for the images
+            },
+          },
+        ],
+      },
     ],
   },
 

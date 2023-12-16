@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>front-end</title>
-</head>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css"
+    />
 
-<body>
-  <div id="app"></div>
-</body>
-
+    <title>CMDB</title>
+    <style>
+      html,
+      body,
+      #root {
+        @apply h-full w-full overflow-hidden bg-slate-50;
+        @apply dark:bg-navy-900;
+      }
+      .react-flow__panel {
+        @apply hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" class="flex"></div>
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+  </body>
 </html>
