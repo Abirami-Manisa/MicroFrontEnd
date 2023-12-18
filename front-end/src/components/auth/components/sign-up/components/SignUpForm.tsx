@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { signUp } from "../constants";
 import { FloatingLabelInput } from "../../../../../helper/FloatingLabelInput";
+import { encryptPassword } from "../../../../../helper/auth";
 
 const SignUpForm = () => {
   const [firstName, setFirstName] = useState<string>("");
@@ -9,6 +10,15 @@ const SignUpForm = () => {
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
 
+  const handleSubmit = () => {
+    const data = {
+      "first name": firstName,
+      "last name": lastName,
+      email: email,
+      password: encryptPassword(password),
+    };
+    console.log("data", data);
+  };
   return (
     <section className="space-y-4 mt-10">
       <div className="flex flex-col space-y-1">
@@ -62,8 +72,7 @@ const SignUpForm = () => {
       </div>
       <button
         id="Signup_Submit"
-        // disabled={!isDirty || !isValid || isLoading || !signup.isOtpVerified}
-        // onClick={handleSubmit(onSubmit)}
+        onClick={handleSubmit}
         className="btn w-full h-12 mt-6 bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 disabled:pointer-events-none disabled:select-none disabled:opacity-60 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
       >
         {signUp.btnTxt}

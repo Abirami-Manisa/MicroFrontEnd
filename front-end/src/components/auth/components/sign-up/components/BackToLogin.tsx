@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { navigateLink } from "../../../../../config/navigationLink";
 import { signUp } from "../constants";
 
-export const BackToLogin = React.memo(() => {
+export const BackToLogin = () => {
   const location = useLocation();
   return (
     <p className="mt-4 text-center text-sm+">
@@ -16,4 +16,4 @@ export const BackToLogin = React.memo(() => {
       </Link>
     </p>
   );
-});
+};

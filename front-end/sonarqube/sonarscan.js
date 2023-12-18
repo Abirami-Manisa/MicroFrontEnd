@@ -15,5 +15,5 @@ scanner(
       "sonar.sources": "./src",
     },
   },
-  () => process.exit()
+  () => process.exit(),
 );

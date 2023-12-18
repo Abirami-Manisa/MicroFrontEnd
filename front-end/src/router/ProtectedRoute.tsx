@@ -7,7 +7,7 @@ export const useAuth = () => {
   const user = getLoggedUser();
   const isLoggedIn = user;
   return {
-    isLoggedIn: !!isLoggedIn,
+    isLoggedIn: isLoggedIn ? true : false,
   };
 };
 

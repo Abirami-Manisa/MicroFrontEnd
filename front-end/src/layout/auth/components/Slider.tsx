@@ -1,19 +1,13 @@
 import React from "react";
-import logo from "../../../assets/logo.png"
-import sliderImage from "../../../assets/slider-image.svg"
+import logo from "../../../assets/logo.png";
+import sliderImage from "../../../assets/slider-image.svg";
 
 const Slider = () => {
   return (
     <section className="hidden md:block lg:block w-full place-items-center lg:grid bg-no-repeat bg-cover">
       <div className="fixed top-0 left-0 hidden md:block lg:block p-6 lg:block lg:px-12">
         <a href="/" className="flex items-center space-x-2">
-          <img
-            alt="LOGO"
-            className="mb-10"
-            width={90}
-            height={36}
-            src={logo}
-          />
+          <img alt="LOGO" className="mb-10" width={90} height={36} src={logo} />
         </a>
       </div>
       <div className="w-full place-items-center max-w-lg lg:grid">

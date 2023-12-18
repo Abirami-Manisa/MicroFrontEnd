@@ -20,7 +20,7 @@ function* authWorker(action: any) {
     const response: ResponseGenerator = yield call(
       axios.get,
       endpoints.auth.login,
-      {}
+      {},
     );
   } catch (error) {}
 }
