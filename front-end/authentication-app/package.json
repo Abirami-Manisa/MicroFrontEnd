@@ -9,7 +9,7 @@
     "start:live": "webpack serve --open --mode development --live-reload --hot",
     "lint": "npm run lint:format && npm run lint:fix ",
     "lint:fix": "eslint ./src --ext .jsx,.js,.ts,.tsx --quiet --fix --ignore-path ./.gitignore --rule strict-boolean-expressions:0",
-    "lint:format": "prettier  --loglevel warn --write \"./**/*.{js,jsx,ts,tsx,css,md,json}\" "
+    "lint:format": "prettier  --log-level warn --write \"./**/*.{js,jsx,ts,tsx,css,md,json}\" "
   },
   "license": "MIT",
   "author": {
@@ -53,6 +53,7 @@
     "@redux-devtools/extension": "^3.3.0",
     "@reduxjs/toolkit": "^2.0.1",
     "@sentry/react": "^7.88.0",
+    "@sentry/webpack-plugin": "^2.10.2",
     "axios": "^1.6.2",
     "js-sha256": "^0.10.1",
     "react": "^18.2.0",

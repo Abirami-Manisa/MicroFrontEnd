@@ -1,8 +1,10 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const { sentryWebpackPlugin } = require("@sentry/webpack-plugin");
 
 const deps = require("./package.json").dependencies;
 module.exports = (_, argv) => ({
+  devtool: "source-map", // Source map generation must be turned on
   output: {
     publicPath: "http://localhost:3001/",
   },
@@ -77,6 +79,11 @@ module.exports = (_, argv) => ({
     }),
     new HtmlWebPackPlugin({
       template: "./src/index.html",
+    }),
+    sentryWebpackPlugin({
+      authToken: process.env.SENTRY_AUTH_TOKEN,
+      org: "clearcode-labs",
+      project: "cmdb-dopz",
     }),
   ],
 });

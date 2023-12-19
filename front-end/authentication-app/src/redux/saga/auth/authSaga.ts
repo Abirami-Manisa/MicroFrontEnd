@@ -18,10 +18,10 @@ function* authWorker(action: any) {
   yield put(setLoader(true));
   try {
     const response: ResponseGenerator = yield call(
-      axios.get,
+      axios.get.bind(axios),
       endpoints.auth.login,
-      {},
     );
+    console.log("Response", response);
   } catch (error) {}
 }
 

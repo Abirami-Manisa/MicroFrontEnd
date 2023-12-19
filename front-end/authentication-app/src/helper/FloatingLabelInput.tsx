@@ -19,7 +19,7 @@ export function FloatingLabelInput(props: Readonly<IFloatingLabelInput>) {
 
   function handleOnChange(e: any) {
     e.preventDefault();
-    setValue(e.target.value);
+    setValue(e.target.value as string);
   }
 
   return (
