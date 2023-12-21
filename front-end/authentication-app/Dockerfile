@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:20.10.0
 
 RUN apt-get -y update
 RUN apt-get install -y xsel
@@ -10,7 +10,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Installs all node packages
-RUN npm install --force 
+RUN npm install 
 
 # Copies everything over to Docker environment
 COPY . .
@@ -25,7 +25,7 @@ RUN rm -rf node_modules
 RUN rm -rf src
 
 # Uses port which is used by the actual application
-#EXPOSE 3000
+EXPOSE 3001
 
 CMD serve -s dist/
 

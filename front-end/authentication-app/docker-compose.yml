@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: authentication-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: authentication-app
+  template:
+    metadata:
+      labels:
+        app: authentication-app
+    spec:
+      containers:
+        - name: authentication-app
+          image: authentication-module
+          ports:
+            - containerPort: 80
+services:
+  authentication-app:
+    container_name: authentication-app
+    image: authentication-module
+    ports:
+      - 3001:80
