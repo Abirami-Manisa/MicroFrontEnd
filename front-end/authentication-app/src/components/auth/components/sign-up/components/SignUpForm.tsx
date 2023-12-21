@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { signUp } from "../constants";
 import { FloatingLabelInput } from "../../../../../helper/FloatingLabelInput";
 import { encryptPassword } from "../../../../../helper/auth";
+import { validateEmail, validatePassword } from "../../../../../helper/regex";
 
 const SignUpForm = () => {
   const [firstName, setFirstName] = useState<string>("");
@@ -9,6 +10,7 @@ const SignUpForm = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
+  const [error, setError] = useState<boolean>(false);
 
   const handleSubmit = () => {
     const data = {
@@ -19,6 +21,8 @@ const SignUpForm = () => {
     };
     console.log("data", data);
   };
+
+  const errors = signUp.form;
   return (
     <section className="space-y-4 mt-10">
       <div className="flex flex-col space-y-1">
@@ -35,20 +39,35 @@ const SignUpForm = () => {
             name="Last Name"
           />
         </div>
-        {/* {errors.FirstName && !errors.LastName && (
-					<span className="text-red-500 text-xs+ ml-2">{errors.FirstName?.message}</span>
-				)}
-				{!errors.FirstName && errors.LastName && (
-					<span className="text-red-500 text-xs+ ml-2">{errors.LastName?.message}</span>
-				)}
-				{errors.FirstName && errors.LastName && (
-					<span className="text-red-500 text-xs+ ml-2">Enter first and last names</span>
-				)} */}
+        {error && firstName === "" && lastName !== "" && (
+          <span className="text-red-500 text-xs+ ml-2">
+            {errors.firstName.error.required}
+          </span>
+        )}
+        {error && firstName !== "" && lastName === "" && (
+          <span className="text-red-500 text-xs+ ml-2">
+            {errors.lastName.error.required}
+          </span>
+        )}
+        {error && firstName === "" && lastName === "" && (
+          <span className="text-red-500 text-xs+ ml-2">
+            Enter first and last names
+          </span>
+        )}
       </div>
       <div className="w-full relative">
         <FloatingLabelInput value={email} setValue={setEmail} name="Email" />
 
-        {/* {errors.Email && <span className="text-red-500 text-xs+ ml-2">{errors.Email?.message}</span>} */}
+        {error && email === "" && (
+          <span className="text-red-500 text-xs+ ml-2">
+            {errors.email.error.required}
+          </span>
+        )}
+        {error && email !== "" && !validateEmail(email) && (
+          <span className="text-red-500 text-xs+ ml-2">
+            {errors.email.error.regex}
+          </span>
+        )}
       </div>
       <div className="flex flex-col space-y-1">
         <div className="flex space-x-3">
@@ -65,10 +84,27 @@ const SignUpForm = () => {
             name="Confirm Password"
           />
         </div>
-        {/* {errors.Password && <span className="text-red-500 text-xs+ ml-2">{errors.Password?.message}</span>}
-				{!errors.Password && getValues("Password") && errors.CPassword && (
-					<span className="text-red-500 text-xs+ ml-2">{errors.CPassword?.message}</span>
-				)} */}
+        {error && password === "" && (
+          <span className="text-red-500 text-xs+ ml-2">
+            {errors.password.error.required}
+          </span>
+        )}
+        {error && password !== "" && !validatePassword(password) && (
+          <span className="text-red-500 text-xs+ ml-2">
+            {errors.password.error.regex}
+          </span>
+        )}
+
+        {error && confirmPassword === "" && (
+          <span className="text-red-500 text-xs+ ml-2">
+            {errors.confirm_password.error.required}
+          </span>
+        )}
+        {error && confirmPassword !== "" && password !== confirmPassword && (
+          <span className="text-red-500 text-xs+ ml-2">
+            {errors.confirm_password.error.mismatch}
+          </span>
+        )}
       </div>
       <button
         id="Signup_Submit"

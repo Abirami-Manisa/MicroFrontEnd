@@ -12,7 +12,7 @@ const container = document.getElementById("auth-app");
 const root = createRoot(container!); // createRoot(container!) if you use TypeScript
 
 Sentry.init({
-  dsn: "https://ac59316506bb8f6434a0c381e8cf1d58@o4506403542728704.ingest.sentry.io/4506421703671808",
+  dsn: "https://8e4845ab16434845b5fcc36a376b9d16@sentry.ccapps.in/17",
   integrations: [
     new Sentry.BrowserTracing({
       // Set 'tracePropagationTargets' to control for which URLs distributed tracing should be enabled
@@ -34,5 +34,5 @@ root.render(
         <App />
       </PersistGate>
     </Provider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );
