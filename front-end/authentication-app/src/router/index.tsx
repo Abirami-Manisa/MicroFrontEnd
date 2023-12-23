@@ -6,12 +6,16 @@ import LoginPage from "../components/auth/components/login";
 import SignUpPage from "../components/auth/components/sign-up";
 import ForgotPasswordPage from "../components/auth/components/forgot-password";
 import AppLogout from "../components/auth/components/logout";
+import { useSelector } from "react-redux";
+import ProfilePage from "../components/profile/ProfilePage";
 
 const AppRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<ProtectedRoute />}></Route>
+        <Route path="/" element={<ProtectedRoute />}>
+          <Route index element={<ProfilePage />} />
+        </Route>
         <Route path="auth" element={<AuthLayout />}>
           <Route index element={<Navigate to="/auth/login" />} />
           <Route path="login" element={<LoginPage />} />

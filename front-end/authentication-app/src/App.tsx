@@ -1,11 +1,21 @@
 import React from "react";
 import { Toaster } from "react-hot-toast";
 import AppRouter from "./router";
+import { ToastContainer } from "react-toastify";
 
 const App = (): JSX.Element => (
   <>
     <AppRouter />
-    <Toaster position="top-center" toastOptions={{ duration: 5000 }} />
+    {/* <Toaster
+      position="top-right"
+      toastOptions={{
+        duration: 100000,
+        style: {
+          padding: "10px",
+        },
+      }}
+    /> */}
+   <ToastContainer autoClose={false} />
   </>
 );
 

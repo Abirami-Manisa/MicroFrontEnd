@@ -13,13 +13,24 @@ const SignUpForm = () => {
   const [error, setError] = useState<boolean>(false);
 
   const handleSubmit = () => {
-    const data = {
-      "first name": firstName,
-      "last name": lastName,
-      email: email,
-      password: encryptPassword(password),
-    };
-    console.log("data", data);
+    if (
+      firstName === "" ||
+      lastName === "" ||
+      email === "" ||
+      password === "" ||
+      confirmPassword === ""
+    ) {
+      setError(true);
+    } else {
+      setError(false);
+      const data = {
+        "first name": firstName,
+        "last name": lastName,
+        email: email,
+        password: encryptPassword(password),
+      };
+      console.log("data", data);
+    }
   };
 
   const errors = signUp.form;

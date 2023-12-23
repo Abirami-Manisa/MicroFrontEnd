@@ -4,7 +4,6 @@ import { SignUpPageLink } from "./components";
 import { login } from "./constants";
 import "../../../../index.scss";
 const LoginPage = () => {
-  console.log("Inisde");
   return (
     <div className="flex w-full max-w-lg grow flex-col justify-center p-5 bg-white">
       <div className="text-center">

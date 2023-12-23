@@ -1,0 +1,7 @@
+.toast-padding {
+  padding: 10px !important;
+}
+
+.toast-message-padding .Toastify__toast-body div:nth-of-type(2) {
+  padding-left: 10px !important;
+}

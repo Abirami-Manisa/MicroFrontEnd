@@ -1,13 +1,13 @@
 import React from "react";
-import { getLoggedUser } from "../helper/auth";
 import { Navigate, Outlet } from "react-router-dom";
 import { navigateLink } from "../config/navigationLink";
+import { useSelector } from "react-redux/es/exports";
 
 export const useAuth = () => {
-  const user = getLoggedUser();
-  const isLoggedIn = user;
+  const { loggedIn } = useSelector((state: any) => state.loginDetails);
+
   return {
-    isLoggedIn: !!isLoggedIn,
+    isLoggedIn: loggedIn,
   };
 };
 
